@@ -14,7 +14,6 @@ RUN apt-get update && \
     rm -fr /var/lib/apt/lists/*
 
 # Expose 443 (HTTPS)
-EXPOSE 443
 EXPOSE 80
 
 # Define the startup command (CMD)
