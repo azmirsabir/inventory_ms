@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: inventory-ms
+    image: inventory-ms:latest
+    command: ["bash", "/var/www/html/run.sh"]
+    ports:
+      - "8001:80"
+    volumes:
+      - ./:/var/www/html/backend/inventoryMs
+
