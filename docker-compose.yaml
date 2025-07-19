@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: inventory-ms
     image: inventory-ms:latest
-    command: ["bash", "/var/www/html/run.sh"]
+#    command: ["bash", "/var/www/html/run.sh"]
     ports:
       - "8100:80"
     volumes:
