@@ -16,6 +16,7 @@ use Illuminate\Foundation\Configuration\Middleware;
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // register middlewares
         $middleware->alias([
           'jwt' => JwtMiddleware::class,
           'role' => RoleMiddleware::class,
@@ -23,7 +24,8 @@ use Illuminate\Foundation\Configuration\Middleware;
         ]);
     })
     ->withSchedule(function (Schedule $schedule) {
-      $schedule->command('inventory:check-low-stock')->at("00:00")->timezone('Asia/Baghdad')->daily();
+        // register scheduled tasks
+        $schedule->command('inventory:check-low-stock')->at("00:00")->timezone('Asia/Baghdad')->daily();
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

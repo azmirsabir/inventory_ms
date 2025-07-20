@@ -17,10 +17,10 @@ class SupplierFilter extends QueryFilter
         return $this->builder->whereIn('id', explode(',', $value));
     }
 
-    public function code($value)
+    public function address($value)
     {
         $likeStr = str_replace('*', '%', $value);
-        return $this->builder->where('code', 'like', $likeStr);
+        return $this->builder->where('address', 'like', $likeStr);
     }
   
     public function name($value)

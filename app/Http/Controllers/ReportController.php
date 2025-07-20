@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Filters\ReportFilter;
 use App\Services\Interface\IReportService;
 
 /**
@@ -47,7 +46,7 @@ class ReportController extends Controller
    *     @OA\Response(response=403, description="Forbidden")
    * )
    */
-    public function lowStockReport(ReportFilter $filters)
+    public function lowStockReport()
     {
       return $this->reportService->getLowStockReport();
     }

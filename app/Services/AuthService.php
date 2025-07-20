@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Exceptions\UnAuthenticatedException;
-use App\Http\Resources\AuthResource;
-use App\Http\Resources\UserResource;
 use App\Repositories\Interfaces\IUserRepo;
 use App\Services\Interface\IAuthService;
 use Illuminate\Support\Facades\Auth;

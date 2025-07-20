@@ -17,16 +17,22 @@ class ProductFilter extends QueryFilter
         return $this->builder->whereIn('id', explode(',', $value));
     }
 
-    public function code($value)
+    public function skw($value)
     {
         $likeStr = str_replace('*', '%', $value);
-        return $this->builder->where('code', 'like', $likeStr);
+        return $this->builder->where('skw', 'like', $likeStr);
     }
   
     public function name($value)
     {
       $likeStr = str_replace('*', '%', $value);
       return $this->builder->where('name', 'like', $likeStr);
+    }
+  
+    public function status($value)
+    {
+      $likeStr = str_replace('*', '%', $value);
+      return $this->builder->where('status', 'like', $likeStr);
     }
 
     public function created_at($value)

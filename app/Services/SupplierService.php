@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Exceptions\NotFoundException;
-use App\Http\Resources\SupplierResource;
 use App\Models\Supplier;
 use App\Repositories\Interfaces\ISupplierRepo;
 use App\Services\Interface\ISupplierService;

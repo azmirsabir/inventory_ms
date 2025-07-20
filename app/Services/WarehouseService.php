@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Exceptions\NotFoundException;
-use App\Http\Resources\WarehouseResource;
 use App\Models\Warehouse;
 use App\Repositories\Interfaces\IWarehouseRepo;
 use App\Services\Interface\IWarehouseService;

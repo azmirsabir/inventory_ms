@@ -16,11 +16,16 @@ class WarehouseFilter extends QueryFilter
     {
         return $this->builder->whereIn('id', explode(',', $value));
     }
+  
+    public function country_id($value)
+    {
+      return $this->builder->whereIn('country_id', explode(',', $value));
+    }
 
-    public function code($value)
+    public function location($value)
     {
         $likeStr = str_replace('*', '%', $value);
-        return $this->builder->where('code', 'like', $likeStr);
+        return $this->builder->where('location', 'like', $likeStr);
     }
   
     public function name($value)

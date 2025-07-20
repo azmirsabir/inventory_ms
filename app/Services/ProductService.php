@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Exceptions\NotFoundException;
-use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Repositories\Interfaces\IProductRepo;
 use App\Services\Interface\IProductService;

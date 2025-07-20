@@ -1,7 +1,6 @@
 <?php
   
   use App\Events\LowStockDetected;
-  use App\Http\Filters\ReportFilter;
   use App\Mail\LowStockMail;
   use App\Notifications\LowStockNotification;
   use App\Services\Interface\IInventoryService;

@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Repositories\Interfaces\IInventoryRepo;
 use App\Services\Interface\IInventoryService;
 use App\Services\Interface\IReportService;
 
