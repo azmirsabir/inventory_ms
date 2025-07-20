@@ -1,0 +1,5655 @@
+{
+	"info": {
+		"_postman_id": "9cee28e1-1005-4a59-bd72-30815011078a",
+		"name": "Numbin System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34718813",
+		"_collection_link": "https://numin-system.postman.co/workspace/Team-Workspace~83a2cde8-2061-4968-8fa9-18815bd32898/collection/34718813-9cee28e1-1005-4a59-bd72-30815011078a?action=share&source=collection_link&creator=34718813"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/user?sort=-updated_at&name=*br*&include=orders,purchases,permissions,roles&pagination=true&perPage=4",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-updated_at"
+								},
+								{
+									"key": "name",
+									"value": "*br*"
+								},
+								{
+									"key": "include",
+									"value": "orders,purchases,permissions,roles"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Permission : view-user"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "new11Email@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "testUser",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Password",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "Password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/user",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Pernission : create-user"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/user/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "500"
+								}
+							]
+						},
+						"description": "Permission : delete-user"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/user/:id?name=ekram&email=updateUser3@gmail.com",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ekram"
+								},
+								{
+									"key": "email",
+									"value": "updateUser3@gmail.com"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "400"
+								}
+							]
+						},
+						"description": "Permission : edit-user"
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/user/:id?include=logs,permissions,roles",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs,permissions,roles"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1001"
+								}
+							]
+						},
+						"description": "Permission : view-user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "project",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/project?sort=-name&pagination=true&perPage=8&include=createdBy",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-name"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "8"
+								},
+								{
+									"key": "include",
+									"value": "createdBy"
+								}
+							]
+						},
+						"description": "Permission : view-project"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "1st project",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "erbil",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "test project",
+									"type": "text"
+								},
+								{
+									"key": "grp_price_meter",
+									"value": "10.20",
+									"type": "text"
+								},
+								{
+									"key": "grc_price_meter",
+									"value": "20.33",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/project",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project"
+							]
+						},
+						"description": "Pernission : create-project"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/project/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						},
+						"description": "Permission : delete-project"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/project/:id?name=test update&grp_price_meter=500",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								":id"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test update"
+								},
+								{
+									"key": "grp_price_meter",
+									"value": "500"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Permission : edit-project"
+					},
+					"response": []
+				},
+				{
+					"name": "project",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Auth",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/project/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Permission : view-project"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "worker",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/worker?sort=-name&pagination=true&perPage=5&type=all",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"worker"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-name"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "5"
+								},
+								{
+									"key": "type",
+									"value": "all",
+									"description": "all, casting, fixing,shipping,mold,finishing"
+								}
+							]
+						},
+						"description": "Permission : view-worker"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "1st woker",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+94581254566",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "worker21@example.com",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "all",
+									"description": "all, casting, fixing,shipping,mold,finishing",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "Emirated",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "300",
+									"description": "monthly",
+									"type": "text"
+								},
+								{
+									"key": "phone2",
+									"value": "9647510125487",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/worker",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"worker"
+							]
+						},
+						"description": "Pernission : create-project"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/worker/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"worker",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Permission : delete-project"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/worker/:id?name=test update&phone=12345647&email=newEmail@gmail.com&salary=400&country=Iraq&address",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"worker",
+								":id"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test update"
+								},
+								{
+									"key": "phone",
+									"value": "12345647"
+								},
+								{
+									"key": "email",
+									"value": "newEmail@gmail.com"
+								},
+								{
+									"key": "salary",
+									"value": "400"
+								},
+								{
+									"key": "country",
+									"value": "Iraq"
+								},
+								{
+									"key": "address",
+									"value": null
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Permission : edit-project"
+					},
+					"response": []
+				},
+				{
+					"name": "worker",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/worker/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"worker",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						},
+						"description": "Permission : view-project"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "material",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/material?sort=-name&pagination=true&perPage=10&page=3&include=createdBy",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"material"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-name"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "3"
+								},
+								{
+									"key": "type",
+									"value": "*10*",
+									"description": "grp,grc,all",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "unit",
+									"value": null,
+									"description": "'kg','ton','m','m2','m3','litr','pcs','box','set'",
+									"disabled": true
+								},
+								{
+									"key": "include",
+									"value": "createdBy"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				},
+				{
+					"name": "types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/material/types/",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"material",
+								"types",
+								""
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "1st material",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "grp",
+									"description": "make as enum (grp, grc)",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "test project",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "unit",
+									"value": "set",
+									"type": "text"
+								},
+								{
+									"key": "per_unit",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/material",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"material"
+							]
+						},
+						"description": "Pernission : create-material"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/material/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"material",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Permission : delete-material"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/material/:id?name=aa&description=test&type=grp&quantity=8&unit=set&per_unit=10",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"material",
+								":id"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "aa"
+								},
+								{
+									"key": "description",
+									"value": "test"
+								},
+								{
+									"key": "type",
+									"value": "grp"
+								},
+								{
+									"key": "quantity",
+									"value": "8"
+								},
+								{
+									"key": "unit",
+									"value": "set"
+								},
+								{
+									"key": "per_unit",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						},
+						"description": "Permission : edit-material"
+					},
+					"response": []
+				},
+				{
+					"name": "material",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Auth",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/material/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"material",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "workerDailyLog",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/workerDailyLog?sort=-id&pagination=true&perPage=10&page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerDailyLog"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-id"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "work_date",
+									"value": "2024-1-5",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "60000",
+									"type": "text"
+								},
+								{
+									"key": "worker_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "working_place",
+									"value": "mold",
+									"description": "['mold', 'fixing', 'finishing', 'shipping', 'used']",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/workerDailyLog",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerDailyLog"
+							]
+						},
+						"description": "Pernission : create-material"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/workerDailyLog/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerDailyLog",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Permission : delete-material"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/workerDailyLog/:id?work_date=2024-1-5&amount=8000&worker_id=6&working_place=mold",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerDailyLog",
+								":id"
+							],
+							"query": [
+								{
+									"key": "work_date",
+									"value": "2024-1-5"
+								},
+								{
+									"key": "amount",
+									"value": "8000"
+								},
+								{
+									"key": "worker_id",
+									"value": "6"
+								},
+								{
+									"key": "working_place",
+									"value": "mold"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						},
+						"description": "Permission : edit-material"
+					},
+					"response": []
+				},
+				{
+					"name": "workerDailyLog",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Auth",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/workerDailyLog/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerDailyLog",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "20"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "paidAmount",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/paidAmount?sort=-id&pagination=true&perPage=10&page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"paidAmount"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-id"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "paid_date",
+									"value": "2024-1-5",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "60000",
+									"type": "text"
+								},
+								{
+									"key": "worker_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/paidAmount",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"paidAmount"
+							]
+						},
+						"description": "Pernission : create-material"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/paidAmount/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"paidAmount",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Permission : delete-material"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/paidAmount/:id?paid_date=2024-1-5&amount=8000&worker_id=6&note=text note",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"paidAmount",
+								":id"
+							],
+							"query": [
+								{
+									"key": "paid_date",
+									"value": "2024-1-5"
+								},
+								{
+									"key": "amount",
+									"value": "8000"
+								},
+								{
+									"key": "worker_id",
+									"value": "6"
+								},
+								{
+									"key": "note",
+									"value": "text note"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						},
+						"description": "Permission : edit-material"
+					},
+					"response": []
+				},
+				{
+					"name": "paidAmount",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Auth",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/paidAmount/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"paidAmount",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "20"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "material-expenses",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/materialExpenses?sort=-id&pagination=true&perPage=10&page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"materialExpenses"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-id"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "purpose",
+									"value": "shipping",
+									"description": "['mold', 'fixing', 'finishing', 'shipping', 'used']",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "expense_date",
+									"value": "2024-1-5",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "material_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "purpose",
+									"value": "used",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/materialExpenses",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"materialExpenses"
+							]
+						},
+						"description": "Pernission : create-material"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/materialExpenses/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"materialExpenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Permission : delete-material"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/materialExpenses/:id?expense_date=2024-1-5&amount=8000&material_id=6&purpose=mold&quantity=5",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"materialExpenses",
+								":id"
+							],
+							"query": [
+								{
+									"key": "expense_date",
+									"value": "2024-1-5"
+								},
+								{
+									"key": "amount",
+									"value": "8000"
+								},
+								{
+									"key": "material_id",
+									"value": "6"
+								},
+								{
+									"key": "purpose",
+									"value": "mold"
+								},
+								{
+									"key": "quantity",
+									"value": "5"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						},
+						"description": "Permission : edit-material"
+					},
+					"response": []
+				},
+				{
+					"name": "materialExpenses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Auth",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/materialExpenses/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"materialExpenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transaction",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/transaction?sort=id&pagination=true&perPage=1&page=17&include=order",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "id"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "17"
+								},
+								{
+									"key": "id",
+									"value": "591",
+									"disabled": true
+								},
+								{
+									"key": "include",
+									"value": "order"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				},
+				{
+					"name": "amounts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/transaction/amounts?pagination=true&perPage=3&page=10&sort=-type",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction",
+								"amounts"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "591",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "3"
+								},
+								{
+									"key": "page",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "-type"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "type",
+									"value": "outgoing",
+									"description": "[outgoing,incoming]",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "test transaction",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "500000",
+									"type": "text"
+								},
+								{
+									"key": "transaction_date",
+									"value": "2005-07-04",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/transaction",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction"
+							]
+						},
+						"description": "Pernission : create-material"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/transaction/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						},
+						"description": "Permission : delete-material"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/transaction/:id?type=outgoing&amount=500&description=test&transaction_date=2005-07-04",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction",
+								":id"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "outgoing"
+								},
+								{
+									"key": "amount",
+									"value": "500"
+								},
+								{
+									"key": "description",
+									"value": "test"
+								},
+								{
+									"key": "transaction_date",
+									"value": "2005-07-04"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "20"
+								}
+							]
+						},
+						"description": "Permission : edit-material"
+					},
+					"response": []
+				},
+				{
+					"name": "transaction",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/transaction/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"transaction",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "14"
+								}
+							]
+						},
+						"description": "Permission : view-material"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CASTING",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/casting?perPage=10&page=1&include=project,steel,mold,shipping,createdBy&sort=-id&pagination=true",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"casting"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "id",
+									"value": "6",
+									"disabled": true
+								},
+								{
+									"key": "include",
+									"value": "project,steel,mold,shipping,createdBy"
+								},
+								{
+									"key": "steel",
+									"value": "38",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "animi",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "-id"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "isShipping",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "isTarkebed",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "shipping",
+									"value": "18",
+									"disabled": true
+								},
+								{
+									"key": "project",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "mold",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "shipping_at",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "production_at",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "tarkebed_by",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "tarkebedat",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "grp,grc",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "ready,broken.shipped,used",
+									"disabled": true
+								},
+								{
+									"key": "hasBroken",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-dailyWorkingType"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "project_id",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "steel_id",
+									"value": "21",
+									"type": "text"
+								},
+								{
+									"key": "meter",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "115",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "ready",
+									"description": "[ready,broken,shipped,used]",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "grp",
+									"description": "[grp,grc]",
+									"type": "text"
+								},
+								{
+									"key": "mold_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "shipping_id",
+									"value": "",
+									"description": "optional",
+									"type": "text"
+								},
+								{
+									"key": "shipping_at",
+									"value": "",
+									"description": "optional",
+									"type": "text"
+								},
+								{
+									"key": "tarkebed_by",
+									"value": "",
+									"description": "optional",
+									"type": "text"
+								},
+								{
+									"key": "tarkebedat",
+									"value": "",
+									"description": "optional",
+									"type": "text"
+								},
+								{
+									"key": "production_at",
+									"value": "2025-10-01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/casting",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"casting"
+							]
+						},
+						"description": "Pernission : create-dailyWorkingType"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/casting/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"casting",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Permission : delete-dailyWorkingType"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/casting/:id?meter=10&project_id=5&steel_id=22&code=444",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"casting",
+								":id"
+							],
+							"query": [
+								{
+									"key": "meter",
+									"value": "10"
+								},
+								{
+									"key": "project_id",
+									"value": "5"
+								},
+								{
+									"key": "steel_id",
+									"value": "22"
+								},
+								{
+									"key": "code",
+									"value": "444"
+								},
+								{
+									"key": "shipping_id",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "shipping_at",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "tarkebed_by",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "tarkebedat",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "production_at",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "mold_id",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": null,
+									"description": "[ready,broken,shipped,used]",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Permission : edit-dailyWorkingType"
+					},
+					"response": []
+				},
+				{
+					"name": "casting",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/casting/:id?include=project,steel,mold,shipping,createdBy",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"casting",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "project,steel,mold,shipping,createdBy"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Permission : view-dailyWorkingType"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "expenses",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/expenses?sort=-updated_at&pagination=true&perPage=10&page=2&include=createdBy",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"expenses"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-updated_at"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "include",
+									"value": "createdBy"
+								}
+							]
+						},
+						"description": "Permission : view-expenses"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "test expenses",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "400",
+									"type": "text"
+								},
+								{
+									"key": "expense_date",
+									"value": "2025-01-01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/expenses?pagination=true&perPage=10&page=2&include=type",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"expenses"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "include",
+									"value": "type"
+								}
+							]
+						},
+						"description": "Pernission : create-expenses"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/expenses/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Permission : delete-expenses"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/expenses/:id?amount=500&description=test&expense_date=2026-01-01",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "500"
+								},
+								{
+									"key": "description",
+									"value": "test"
+								},
+								{
+									"key": "expense_date",
+									"value": "2026-01-01"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Permission : edit-expenses"
+					},
+					"response": []
+				},
+				{
+					"name": "expenses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/expenses/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Permission : view-expenses"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dailyExpense",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/dailyExpense?sort=-updated_at&pagination=true&perPage=10&page=1&include=worker,&purpose=mold",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"dailyExpense"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-updated_at"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "include",
+									"value": "worker,"
+								},
+								{
+									"key": "id",
+									"value": "60",
+									"disabled": true
+								},
+								{
+									"key": "purpose",
+									"value": "mold",
+									"description": "mold,fixing,finishing,shipping,used"
+								},
+								{
+									"key": "date",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "amount",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-dailyExpense"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "worker_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "300",
+									"type": "text"
+								},
+								{
+									"key": "purpose",
+									"value": "used",
+									"description": "mold,fixing,finishing,shipping,used",
+									"type": "text"
+								},
+								{
+									"key": "expense_date",
+									"value": "2022-01-2",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/dailyExpense?pagination=true&perPage=10&page=2&include=type&purpose=",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"dailyExpense"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "include",
+									"value": "type"
+								},
+								{
+									"key": "purpose",
+									"value": ""
+								}
+							]
+						},
+						"description": "Pernission : create-dailyExpense"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/dailyExpense/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"dailyExpense",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "22"
+								}
+							]
+						},
+						"description": "Permission : delete-dailyExpense"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/dailyExpense/:id?worker_id=4&amount=100&expense_date=2022-01-2&note=test update&purpose=fixing",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"dailyExpense",
+								":id"
+							],
+							"query": [
+								{
+									"key": "worker_id",
+									"value": "4"
+								},
+								{
+									"key": "amount",
+									"value": "100"
+								},
+								{
+									"key": "expense_date",
+									"value": "2022-01-2"
+								},
+								{
+									"key": "note",
+									"value": "test update"
+								},
+								{
+									"key": "purpose",
+									"value": "fixing",
+									"description": "mold,fixing,finishing,shipping,used"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Permission : edit-dailyExpense"
+					},
+					"response": []
+				},
+				{
+					"name": "dailyExpense",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/dailyExpense/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"dailyExpense",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Permission : view-dailyExpense"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "steel",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steel?pagination=true&perPage=10&page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steel"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "notused",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "grp",
+									"description": "grp,grc",
+									"disabled": true
+								},
+								{
+									"key": "productionDate",
+									"value": "2020-07-06",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "001",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "grp",
+									"type": "text"
+								},
+								{
+									"key": "production_date",
+									"value": "2024-12-31",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/steel",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steel"
+							]
+						},
+						"description": "Pernission : create-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steel/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steel",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Permission : delete-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steel/:id?code=testUpdate&type=grc&productionDate=2012-08-23",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steel",
+								":id"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "testUpdate"
+								},
+								{
+									"key": "type",
+									"value": "grc"
+								},
+								{
+									"key": "productionDate",
+									"value": "2012-08-23"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Permission : edit-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "steel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steel/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steel",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "100"
+								}
+							]
+						},
+						"description": "Permission : view-steel"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mold",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/mold?pagination=true&perPage=10&page=2&include=project",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"mold"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "include",
+									"value": "project"
+								},
+								{
+									"key": "code",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "project",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": null,
+									"description": "grp,grc",
+									"disabled": true
+								},
+								{
+									"key": "meter",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "production_date",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-mold"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "project_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "test code",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "grp",
+									"type": "text"
+								},
+								{
+									"key": "production_date",
+									"value": "2026-01-01",
+									"type": "text"
+								},
+								{
+									"key": "meter",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/mold",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"mold"
+							]
+						},
+						"description": "Pernission : create-mold"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/mold/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"mold",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Permission : delete-mold"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/mold/:id?code=14584&type=grc",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"mold",
+								":id"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "14584"
+								},
+								{
+									"key": "type",
+									"value": "grc"
+								},
+								{
+									"key": "production_date",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "meter",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "project_id",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9"
+								}
+							]
+						},
+						"description": "Permission : edit-mold"
+					},
+					"response": []
+				},
+				{
+					"name": "mold",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/mold/:id?include=project",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"mold",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "project"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "18"
+								}
+							]
+						},
+						"description": "Permission : view-mold"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "shipping",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/shipping?sort=-id&pagination=true&perPage=10&page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shipping"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-id"
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "created_at",
+									"value": "2024-08-19,2024-08-25",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-shipping"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"project_id\":1,\n    \"driver_name\":\"test\",\n    \"truck_plate_number\":\"5430\",\n    \"kren_plate_number\":\"www\",\n    \"kren_driver_name\":\"aa\",\n    \"truck_cost\":111,\n    \"kren_cost\":222,\n    \"other_costs\":33\n   \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/shipping",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shipping"
+							]
+						},
+						"description": "Pernission : create-shipping"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/shipping/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shipping",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Permission : delete-shipping"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"project_id\":1,\n    \"driver_name\":\"aaaaabb\",\n    \"truck_plate_number\":\"5430\",\n    \"kren_plate_number\":\"www\",\n    \"kren_driver_name\":\"aa\",\n    \"truck_cost\":111,\n    \"kren_cost\":222,\n    \"other_costs\":33\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/shipping/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shipping",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						},
+						"description": "Permission : edit-shipping"
+					},
+					"response": []
+				},
+				{
+					"name": "shipping",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/shipping/:id?include=logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"shipping",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Permission : view-shipping"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "steelMaterial",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelMaterial?pagination=true&perPage=10&page=1&include=steel,material",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelMaterial"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "include",
+									"value": "steel,material"
+								},
+								{
+									"key": "steel",
+									"value": "13",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "11",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "steel_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "material_id",
+									"value": "21",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "note",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "used_at",
+									"value": "2021-01-14",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/steelMaterial",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelMaterial"
+							]
+						},
+						"description": "Pernission : create-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelMaterial/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelMaterial",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						},
+						"description": "Permission : delete-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelMaterial/:id?steel_id=22&material_id=11&quantity=100",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelMaterial",
+								":id"
+							],
+							"query": [
+								{
+									"key": "steel_id",
+									"value": "22"
+								},
+								{
+									"key": "material_id",
+									"value": "11"
+								},
+								{
+									"key": "quantity",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Permission : edit-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "steelMaterial",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelMaterial/:id?include=logs,steel,material",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelMaterial",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "logs,steel,material"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Permission : view-steel"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "steelCost",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelCost?pagination=true&perPage=10&page=1&include=steel,worker",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelCost"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "include",
+									"value": "steel,worker"
+								},
+								{
+									"key": "id",
+									"value": "1001",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "steel_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "worker_id",
+									"value": "2",
+									"description": "nullable",
+									"type": "text"
+								},
+								{
+									"key": "cost",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "testNote",
+									"type": "text"
+								},
+								{
+									"key": "expense_date",
+									"value": "2024-01-01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/steelCost",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelCost"
+							]
+						},
+						"description": "Pernission : create-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelCost/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelCost",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Permission : delete-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelCost/:id?steel_id=22&worker_id=100&cost=2000&note=updatedNote&expense_date=2024-09-28",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelCost",
+								":id"
+							],
+							"query": [
+								{
+									"key": "steel_id",
+									"value": "22"
+								},
+								{
+									"key": "worker_id",
+									"value": "100"
+								},
+								{
+									"key": "cost",
+									"value": "2000"
+								},
+								{
+									"key": "note",
+									"value": "updatedNote"
+								},
+								{
+									"key": "expense_date",
+									"value": "2024-09-28"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						},
+						"description": "Permission : edit-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "cost",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelCost/:id?include=steel,worker,logs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelCost",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "steel,worker,logs"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						},
+						"description": "Permission : view-steel"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fixing",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/fixing?pagination=true&perPage=10&page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"fixing"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "id",
+									"value": "1001",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-finshing"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "casting_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "fixing_date",
+									"value": "2025-02-01",
+									"description": "nullable",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/fixing",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"fixing"
+							]
+						},
+						"description": "Pernission : create-finishing"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/fixing/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"fixing",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Permission : delete-finshing"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/fixing/:id?casting_id=6&fixing_date=2024-02-01",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"fixing",
+								":id"
+							],
+							"query": [
+								{
+									"key": "casting_id",
+									"value": "6"
+								},
+								{
+									"key": "fixing_date",
+									"value": "2024-02-01"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Permission : edit-finshing"
+					},
+					"response": []
+				},
+				{
+					"name": "fixing",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/fixing/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"fixing",
+								":id"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "project,expenseType,worker,logs",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Permission : view-finishing"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "moldCost",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/moldCost?pagination=true&perPage=10&page=1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"moldCost"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Permission : view-moldCost"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mold_id",
+									"value": "2",
+									"description": "removing this",
+									"type": "text"
+								},
+								{
+									"key": "expenses_type_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "worker_id",
+									"value": "2",
+									"description": "nullable",
+									"type": "text"
+								},
+								{
+									"key": "cost",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "testNote",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "grp",
+									"description": "grp,grc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/moldCost",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"moldCost"
+							]
+						},
+						"description": "Pernission : create-steel"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/moldCost/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"moldCost",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "14"
+								}
+							]
+						},
+						"description": "Permission : delete-moldCost"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelCost/:id?mold_id=5&expenses_type_id=11&worker_id=100&cost=2000&note=updatedNote",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelCost",
+								":id"
+							],
+							"query": [
+								{
+									"key": "mold_id",
+									"value": "5"
+								},
+								{
+									"key": "expenses_type_id",
+									"value": "11"
+								},
+								{
+									"key": "worker_id",
+									"value": "100"
+								},
+								{
+									"key": "cost",
+									"value": "2000"
+								},
+								{
+									"key": "note",
+									"value": "updatedNote"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Permission : edit-steelCost"
+					},
+					"response": []
+				},
+				{
+					"name": "moldCost",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/steelCost/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"steelCost",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						},
+						"description": "Permission : view-steel"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/order?sort=created_at&pagination=true",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"order"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "created_at"
+								},
+								{
+									"key": "include",
+									"value": "items.material,transactions,purchasedBy,createdBy",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "15",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "106",
+									"disabled": true
+								},
+								{
+									"key": "accepted",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "created_by",
+									"value": "465",
+									"disabled": true
+								},
+								{
+									"key": "invoice",
+									"value": "*8320*",
+									"disabled": true
+								},
+								{
+									"key": "purchased_by",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permission : view-order"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"invoice_number\":\"abceefee\",\n    \"invoice_number2\":\"abeceef\",\n    \"purchased_by\":3,\n    \"purchased_at\":\"2024-08-13\",\n    \"accepted\":true,\n    \"items\": [\n        {\n            \"material_id\":1,\n            \"quantity\":10,\n            \"price\":1000,\n            \"expiration_date\":\"2024-08-13\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/order",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"order"
+							]
+						},
+						"description": "Pernission : create-order"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/material/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"material",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						},
+						"description": "Permission : delete-order"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accepted\":1,\n    \"invoice_number\":\"ddd\",\n    \"invoice_number2\":\"eee\",\n     \"purchased_by\":3,\n    \"purchased_at\":\"2024-08-13\",\n    \"items\": [\n        {\n            \"material_id\":1,\n            \"quantity\":10,\n            \"price\":500,\n            \"expiration_date\":\"2024-08-13\"\n        }\n  \n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/order/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"order",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						},
+						"description": "Permission : edit-order"
+					},
+					"response": []
+				},
+				{
+					"name": "order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/order/:order?include=createdBy,items.material,purchasedBy",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"order",
+								":order"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "createdBy,items.material,purchasedBy"
+								}
+							],
+							"variable": [
+								{
+									"key": "order",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Permission : view-order"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteItem",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/order/:order/item/:material",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"order",
+								":order",
+								"item",
+								":material"
+							],
+							"variable": [
+								{
+									"key": "order",
+									"value": "41"
+								},
+								{
+									"key": "material",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "workerSalary",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/workerSalary?pagination=true&perPage=15&page=1&sort=-created_at",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerSalary"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "worker",
+									"description": "optional",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "true"
+								},
+								{
+									"key": "perPage",
+									"value": "15"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "workerID",
+									"value": "25",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "-created_at"
+								}
+							]
+						},
+						"description": "Permission : view-workerSalary"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "worker_id",
+									"value": "38",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2024",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "3000000",
+									"type": "text"
+								},
+								{
+									"key": "month",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "paid_date",
+									"value": "2023-01-01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/workerSalary",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerSalary"
+							]
+						},
+						"description": "Pernission : create-workerSalary"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/workerSalary/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerSalary",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						},
+						"description": "Permission : delete-workerSalary"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "worker_id",
+									"value": "38",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2023",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "500000",
+									"type": "text"
+								},
+								{
+									"key": "month",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "paid_date",
+									"value": "2023-01-01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/workerSalary/:id",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerSalary",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12"
+								}
+							]
+						},
+						"description": "Permission : edit-workerSalary"
+					},
+					"response": []
+				},
+				{
+					"name": "wokerSalary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Auth",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/workerSalary/:workerSalary",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"workerSalary",
+								":workerSalary"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "worker",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "workerSalary",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Permission : view-workerSalary"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"var response = pm.response.json();",
+									"if (response.status === 200 && response.data && response.data.token) {",
+									"",
+									"    var token = response.data.token;",
+									"",
+									"    pm.environment.set(\"token\", token);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/auth/login",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"var response = pm.response.json();",
+									"if (response.status === 200) {",
+									"",
+									"",
+									"    pm.environment.unset(\"token\");",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/auth/logout",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "roles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/auth/roles",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permissions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/auth/permissions",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userPermissions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/auth/userPermissions",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"userPermissions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permission",
+			"item": [
+				{
+					"name": "add-role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authr",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/permission/add-role/:user/:role",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"permission",
+								"add-role",
+								":user",
+								":role"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "2"
+								},
+								{
+									"key": "role",
+									"value": "admin"
+								}
+							]
+						},
+						"description": "available roles :\n\nadmin\n\nPermission : adding-user-role"
+					},
+					"response": []
+				},
+				{
+					"name": "add-permission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/permission/add-permission/:user/:permission",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"permission",
+								"add-permission",
+								":user",
+								":permission"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "1001"
+								},
+								{
+									"key": "permission",
+									"value": "create-project"
+								}
+							]
+						},
+						"description": "available permissions :\n\ncreate-user\n\nedit-user\n\ndelete-user\n\nview-user\n\ncreate-userRole\n\ndelete-user-role\n\ncreate-userPermission\n\ndelete-userPermission\n\n...........................................\n\nPermission : create-userPermission"
+					},
+					"response": []
+				},
+				{
+					"name": "remove-role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/permission/remove-role/:user/:role",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"permission",
+								"remove-role",
+								":user",
+								":role"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "1001"
+								},
+								{
+									"key": "role",
+									"value": "admin"
+								}
+							]
+						},
+						"description": "Permission : delete-userRole"
+					},
+					"response": []
+				},
+				{
+					"name": "remove-permission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/permission/remove-permission/:user/:permission",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"permission",
+								"remove-permission",
+								":user",
+								":permission"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "1001"
+								},
+								{
+									"key": "permission",
+									"value": "add-role"
+								}
+							]
+						},
+						"description": "Permission : delete-userPermission"
+					},
+					"response": []
+				},
+				{
+					"name": "permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/permission",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"permission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/permission/roles",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"permission",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "report",
+			"item": [
+				{
+					"name": "monthlMoldReport",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/report/monthlyMoldReport/:mold/:project/:month/:year",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"report",
+								"monthlyMoldReport",
+								":mold",
+								":project",
+								":month",
+								":year"
+							],
+							"variable": [
+								{
+									"key": "mold",
+									"value": "14"
+								},
+								{
+									"key": "project",
+									"value": "10"
+								},
+								{
+									"key": "month",
+									"value": "9"
+								},
+								{
+									"key": "year",
+									"value": "2024"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"",
+					"",
+					"",
+					"var token =pm.environment.get(\"token\");",
+					"",
+					"",
+					"    pm.request.headers.add({",
+					"    key: \"Authorization\",",
+					"    value: \"Bearer \" + token",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://vmi1822763.contaboserver.net:8000/api/v1",
+			"disabled": true
+		},
+		{
+			"key": "token",
+			"value": "14|axTVQ1VxfDQArVijecuDHS82WikxmFbz2rxl2Ykt6e8c6a90",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "xsrf-token",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "url",
+			"value": "http://vmi1822763.contaboserver.net:8000",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}

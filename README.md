@@ -11,7 +11,7 @@ A backend API for a **Multi-Warehouse, Multi-Country Inventory Management System
 
 ---
 
-## 📁 Project Setup Instructions
+## Project Setup Instructions
 
 ### 1. Clone the Repository
 
@@ -84,21 +84,67 @@ php artisan serve
 ```
 
 ---
+### 10. Clear Cache & Cache Configurations
 
-## Testing & Scheduler
+```bash
+php artisan config:clear
+php artisan config:cache
+```
+
+---
+
+### 11. Don't forget to run queue worker for email & Slack notifications:
+
+```bash
+php artisan queue:work
+```
+
+---
+
+
+### Application Access
+
+You can access the live application at:
+
+**API Base URL:** [`http://ar.khoriyasa.com/api`](http://ar.khoriyasa.com/api)
+
+**Swagger API Documentation:** [`http://ar.khoriyasa.com/api/documentation#/`](http://ar.khoriyasa.com/api/documentation#/)
+
+and find postman collection at: **XPostmanCollection** directory in the root of the project.
+
+## These endpoints are publicly accessible (authentication is not required)
+
+---
+
+## Testing
 
 Note: test the unit testing on .env.testing environment
 ```bash
 php artisan test  # manual run
 ```
 
-## Scheduler
+---
+
+## Commands
+This command runs a scheduled task to check for low stock items and send notifications via email and Slack:
+```bash
+php artisan inventory:check-low-stock 
+```
+
+---
+
+## Scheduler & Queue Worker
 To enable scheduler:
 
 ```bash
-0 0 * * * php /path-to-project/artisan schedule:run >> /dev/null 2>&1
+php artisan schedule:run
 ```
 
+To enable queue worker:
+
+```bash
+php artisan queue:work
+```
 ---
 
 ## Admin Login (Test)
@@ -110,7 +156,7 @@ Password: password
 
 ---
 
-## 📦 Deliverables
+## Deliverables
 
 * GitHub Repository with:
 
