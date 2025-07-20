@@ -28,9 +28,10 @@
     
     public function find($id): ?Inventory
     {
+      $inventory=$this->model->find($id);
       $cacheKey = 'inventory_' . $id;
       
-      return Cache::add($cacheKey, $this->model->find($id), now()->addHours(1)) ? Cache::get($cacheKey) : Cache::get($cacheKey);
+      return Cache::add($cacheKey, $inventory , now()->addHours(1)) ? Cache::get($cacheKey) : Cache::get($cacheKey);
     }
     
     public function create(array $data): Inventory
@@ -42,26 +43,26 @@
     {
       $inventory->fill($data);
       $inventory->save();
-      cache()->forget("inventory_$inventory->productId");
+      cache()->forget("inventory_$inventory->id");
       return $inventory;
     }
     
     public function delete(Inventory $inventory): bool
     {
-      cache()->forget("inventory_$inventory->productId");
+      cache()->forget("inventory_$inventory->id");
       return $inventory->delete();
     }
     
     public function incrementStock(Inventory $inventory, int $quantity): bool
     {
-      cache()->forget("inventory_$inventory->productId");
+      cache()->forget("inventory_$inventory->id");
       $inventory->quantity += $quantity;
       return $inventory->save();
     }
     
     public function decrementStock(Inventory $inventory, int $quantity): bool
     {
-      cache()->forget("inventory_$inventory->productId");
+      cache()->forget("inventory_$inventory->id");
       $inventory->quantity -= $quantity;
       return $inventory->save();
     }
@@ -86,10 +87,9 @@
         ->get();
     }
     
-    public function lowStockInventory($filters): Collection
+    public function lowStockInventory(): Collection
     {
       return $this->model
-//        ->search($filters)
         ->whereColumn('quantity', '<=', 'minimum_quantity')
         ->get();
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Filters\WarehouseFilter;
 use App\Http\Requests\WarehouseStoreRequest;
 use App\Http\Requests\WarehouseUpdateRequest;
+use App\Http\Resources\WarehouseResource;
 use App\Services\Interface\IWarehouseService;
 
 /**
@@ -43,7 +44,12 @@ class WarehouseController extends Controller
    */
     public function index(WarehouseFilter $filters)
     {
-        return $this->warehouseService->getAllWarehouses($filters);
+        $warehouses = $this->warehouseService->getAllWarehouses($filters);
+        
+      if ($filters->isPaginated()) {
+        return response()->withPagination($warehouses,WarehouseResource::collection($warehouses));
+      }
+        return WarehouseResource::collection($warehouses);
     }
   
   /**
@@ -66,7 +72,7 @@ class WarehouseController extends Controller
    */
     public function store(WarehouseStoreRequest $request)
     {
-        return $this->warehouseService->createWarehouse($request->validated());
+        return WarehouseResource::make($this->warehouseService->createWarehouse($request->validated()));
     }
   
   /**
@@ -92,7 +98,7 @@ class WarehouseController extends Controller
    */
     public function show(string $id)
     {
-        return $this->warehouseService->getWarehouseById($id);
+        return WarehouseResource::make($this->warehouseService->getWarehouseById($id));
     }
   
   /**
@@ -116,7 +122,7 @@ class WarehouseController extends Controller
    */
     public function update(WarehouseUpdateRequest $request, string $id)
     {
-        return $this->warehouseService->updateWarehouse($id, $request->validated());
+        return WarehouseResource::make($this->warehouseService->updateWarehouse($id, $request->validated()));
     }
   
   /**

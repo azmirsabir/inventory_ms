@@ -4,6 +4,7 @@
   
   use App\Exceptions\NotFoundException;
   use App\Http\Resources\CountryResource;
+  use App\Models\Country;
   use App\Repositories\Interfaces\ICountryRepo;
   use App\Services\Interface\ICountryService;
   
@@ -18,40 +19,36 @@
     
     public function getAllCountries($filters)
     {
-      $counties = $this->countryRepository->all($filters);
-      if ($filters->isPaginated()) {
-        return response()->withPagination($counties, CountryResource::collection($counties));
-      }
-      return CountryResource::collection($counties);
+      return $this->countryRepository->all($filters);
     }
     
     /**
      * @throws NotFoundException
      */
-    public function getCountryById($id): CountryResource
+    public function getCountryById($id): Country
     {
       $country = $this->countryRepository->find($id);
       if (!$country) {
         throw new NotFoundException("Country with ID {$id} not found.");
       }
-      return new CountryResource($country);
+      return $country;
     }
     
-    public function createCountry(array $data): CountryResource
+    public function createCountry(array $data): Country
     {
-      return new CountryResource($this->countryRepository->create($data));
+      return $this->countryRepository->create($data);
     }
     
     /**
      * @throws NotFoundException
      */
-    public function updateCountry($id, array $data): CountryResource
+    public function updateCountry($id, array $data): Country
     {
       $country = $this->countryRepository->find($id);
       if (!$country) {
         throw new NotFoundException("Country with ID {$id} not found.");
       }
-      return new CountryResource($this->countryRepository->update($country, $data));
+      return $this->countryRepository->update($country, $data);
     }
     
     /**

@@ -6,6 +6,7 @@ use App\Http\Filters\InventoryFilter;
 use App\Http\Requests\InventoryStoreRequest;
 use App\Http\Requests\InventoryTransferRequest;
 use App\Http\Requests\InventoryUpdateRequest;
+use App\Http\Resources\InventoryResource;
 use App\Services\Interface\IInventoryService;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,11 @@ class InventoryController extends Controller
    */
     public function index(InventoryFilter $filters)
     {
-      return $this->inventoryService->getAllInventories($filters);
+      $inventories = $this->inventoryService->getAllInventories($filters);
+      if ($filters->isPaginated()) {
+        return response()->withPagination($inventories, InventoryResource::collection($inventories));
+      }
+      return InventoryResource::collection($filters);
     }
   
   /**
@@ -62,7 +67,7 @@ class InventoryController extends Controller
    */
     public function store(InventoryStoreRequest $request)
     {
-      return $this->inventoryService->createInventory($request->validated());
+      return InventoryResource::make($this->inventoryService->createInventory($request->validated()));
     }
   
   /**
@@ -79,7 +84,7 @@ class InventoryController extends Controller
    */
     public function show($id)
     {
-      return $this->inventoryService->getInventoryById($id);
+      return InventoryResource::make($this->inventoryService->getInventoryById($id));
     }
   
   /**
@@ -104,7 +109,7 @@ class InventoryController extends Controller
    */
     public function update(InventoryUpdateRequest $request, $id)
     {
-      return $this->inventoryService->updateInventory($id, $request->validated());
+      return InventoryResource::make($this->inventoryService->updateInventory($id, $request->validated()));
     }
   
   /**
@@ -135,7 +140,7 @@ class InventoryController extends Controller
    * )
    */
     public function globalView(Request $filters){
-      return $this->inventoryService->getGlobalInventoryView($filters);
+      return InventoryResource::collection($this->inventoryService->getGlobalInventoryView($filters));
     }
   
   /**

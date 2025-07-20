@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\NotFoundException;
 use App\Http\Resources\WarehouseResource;
+use App\Models\Warehouse;
 use App\Repositories\Interfaces\IWarehouseRepo;
 use App\Services\Interface\IWarehouseService;
 
@@ -17,34 +18,30 @@ class WarehouseService implements IWarehouseService
   
   public function getAllWarehouses($filters)
   {
-    $warehouses = $this->warehouseRepository->all($filters);
-    if ($filters->isPaginated()) {
-      return response()->withPagination($warehouses,WarehouseResource::collection($warehouses));
-    }
-    return WarehouseResource::collection($warehouses);
+    return $this->warehouseRepository->all($filters);
   }
   
-  public function getWarehouseById($id): WarehouseResource
+  public function getWarehouseById($id): Warehouse
   {
     $warehouse = $this->warehouseRepository->find($id);
     if (!$warehouse) {
       throw new NotFoundException("Warehouse with ID {$id} not found.");
     }
-    return new WarehouseResource($warehouse);
+    return $warehouse;
   }
   
-  public function createWarehouse(array $data): WarehouseResource
+  public function createWarehouse(array $data): Warehouse
   {
-    return new WarehouseResource($this->warehouseRepository->create($data));
+    return $this->warehouseRepository->create($data);
   }
   
-  public function updateWarehouse($id, array $data): WarehouseResource
+  public function updateWarehouse($id, array $data): Warehouse
   {
     $warehouse = $this->warehouseRepository->find($id);
     if (!$warehouse) {
       throw new NotFoundException("Warehouse with ID {$id} not found.");
     }
-    return new WarehouseResource($this->warehouseRepository->update($warehouse, $data));
+    return $this->warehouseRepository->update($warehouse, $data);
   }
   
   public function deleteWarehouse($id): bool

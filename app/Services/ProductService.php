@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\NotFoundException;
 use App\Http\Resources\ProductResource;
+use App\Models\Product;
 use App\Repositories\Interfaces\IProductRepo;
 use App\Services\Interface\IProductService;
 
@@ -17,34 +18,30 @@ class ProductService implements IProductService
   
   public function getAllProducts($filters)
   {
-    $products = $this->productRepository->all($filters);
-    if ($filters->isPaginated()) {
-      return response()->withPagination($products,ProductResource::collection($products));
-    }
-    return ProductResource::collection($products);
+    return $this->productRepository->all($filters);
   }
   
-  public function getProductById($id): ProductResource
+  public function getProductById($id): Product
   {
     $product = $this->productRepository->find($id);
     if (!$product) {
       throw new NotFoundException("product with ID {$id} not found.");
     }
-    return new ProductResource($product);
+    return $product;
   }
   
-  public function createProduct(array $data): ProductResource
+  public function createProduct(array $data): Product
   {
-    return new ProductResource($this->productRepository->create($data));
+    return $this->productRepository->create($data);
   }
   
-  public function updateProduct($id, array $data): ProductResource
+  public function updateProduct($id, array $data): Product
   {
     $product = $this->productRepository->find($id);
     if (!$product) {
       throw new NotFoundException("product with ID {$id} not found.");
     }
-    return new ProductResource($this->productRepository->update($product, $data));
+    return $this->productRepository->update($product, $data);
   }
   
   public function deleteProduct($id): bool

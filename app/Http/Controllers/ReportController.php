@@ -49,6 +49,6 @@ class ReportController extends Controller
    */
     public function lowStockReport(ReportFilter $filters)
     {
-      return $this->reportService->getLowStockReport($filters);
+      return $this->reportService->getLowStockReport();
     }
 }

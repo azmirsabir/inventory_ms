@@ -30,7 +30,7 @@ class CheckLowStockJob implements ShouldQueue
         $inventoryService = App::make(IInventoryService::class);
         $notificationService = App::make(INotificationService::class);
       
-        $lowStockProducts = $inventoryService->lowStockInventory(new ReportFilter(new Request()));
+        $lowStockProducts = $inventoryService->lowStockInventory();
         
         $notificationService->sendSlackNotification(
           $lowStockProducts,

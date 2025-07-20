@@ -29,7 +29,7 @@ class AuthService implements IAuthService
       $token = JWTAuth::fromUser($user);
       $user->api_token = $token;
       $user->expires_in = auth('api')->factory()->getTTL() * 60;
-      return new AuthResource($user);
+      return $user;
     }
     public function login(array $credentials)
     {
@@ -39,7 +39,7 @@ class AuthService implements IAuthService
           $user = Auth::user();
           $user->api_token = $token;
           $user->expires_in = auth('api')->factory()->getTTL() * 60;
-          return new AuthResource($user);
+          return $user;
       } catch (\Exception $e) {
         throw new UnAuthenticatedException();
       }
@@ -52,13 +52,13 @@ class AuthService implements IAuthService
     
     public function getUser()
     {
-        return new UserResource(Auth::user());
+        return Auth::user();
     }
     
     public function updateUser(array $data)
     {
         $user = Auth::user();
         $updatedUser=$this->userRepository->update($user, $data);
-        return new UserResource($updatedUser);
+        return $updatedUser;
     }
 }

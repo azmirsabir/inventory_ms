@@ -17,8 +17,8 @@ class ReportService implements IReportService
         $this->inventoryService = $inventoryService;
     }
     
-    public function getLowStockReport($filters)
+    public function getLowStockReport()
     {
-        return $this->inventoryService->lowStockInventory($filters);
+        return $this->inventoryService->lowStockInventory();
     }
 }

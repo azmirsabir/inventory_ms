@@ -5,12 +5,11 @@ namespace App\Services;
 use App\Events\LowStockDetected;
 use App\Exceptions\InsufficientStockException;
 use App\Exceptions\NotFoundException;
-use App\Http\Resources\InventoryTransactionResource;
+use App\Models\InventoryTransaction;
 use App\Repositories\Interfaces\IInventoryRepo;
 use App\Repositories\Interfaces\IInventoryTransactionRepo;
 use App\Services\Interface\IInventoryTransactionService;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class InventoryTransactionService implements IInventoryTransactionService
 {
@@ -23,25 +22,21 @@ class InventoryTransactionService implements IInventoryTransactionService
   }
   public function getAllTransactions($filters)
   {
-    $transactions = $this->transactionRepository->all($filters);
-    if ($filters->isPaginated()) {
-      return response()->withPagination($transactions,InventoryTransactionResource::collection($transactions));
-    }
-    return InventoryTransactionResource::collection($transactions);
+    return $this->transactionRepository->all($filters);
   }
-  public function getTransactionById($id): InventoryTransactionResource
+  public function getTransactionById($id): InventoryTransaction
   {
     $transaction = $this->transactionRepository->find($id);
     if (!$transaction) {
       throw new NotFoundException("Transaction with ID {$id} not found.");
     }
-    return new InventoryTransactionResource($transaction);
+    return $transaction;
   }
   //creates only single transaction
-  public function createTransaction(array $data, bool $useTransaction = true): InventoryTransactionResource
+  public function createTransaction(array $data, bool $useTransaction = true): InventoryTransaction
   {
       $callback = function () use ($data) {
-        $data['created_by'] = 1;
+        $data['created_by'] = auth()->id();
         
         $productId = $data['product_id'];
         $warehouseId = $data['warehouse_id'];
@@ -80,7 +75,7 @@ class InventoryTransactionService implements IInventoryTransactionService
         
         $transaction = $this->transactionRepository->create($data);
         
-        return new InventoryTransactionResource($transaction);
+        return $transaction;
       };
       return $useTransaction ? DB::transaction($callback) : $callback();
   }

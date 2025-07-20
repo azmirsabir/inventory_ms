@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Resources\AuthResource;
+use App\Http\Resources\UserResource;
 use App\Services\Interface\IAuthService;
 
 /**
@@ -41,7 +43,7 @@ class AuthController extends Controller
    */
     public function register(UserRegisterRequest $request)
     {
-        return $this->authService->register($request->validated());
+        return AuthResource::make($this->authService->register($request->validated()));
     }
   
   /**
@@ -63,7 +65,7 @@ class AuthController extends Controller
    */
     public function login(UserLoginRequest $request)
     {
-        return $this->authService->login($request->validated());
+        return AuthResource::make($this->authService->login($request->validated()));
     }
   
   /**
@@ -91,7 +93,7 @@ class AuthController extends Controller
    */
     public function getUser()
     {
-        return $this->authService->getUser();
+        return UserResource::make($this->authService->getUser());
     }
   
   /**
@@ -113,6 +115,6 @@ class AuthController extends Controller
    */
     public function updateUser(UserUpdateRequest $request)
     {
-        return $this->authService->updateUser($request->validated());
+        return UserResource::make($this->authService->updateUser($request->validated()));
     }
 }

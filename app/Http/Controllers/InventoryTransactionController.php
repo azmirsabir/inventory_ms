@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Filters\InventoryTransactionFilter;
 use App\Http\Requests\InventoryTransactionStoreRequest;
+use App\Http\Resources\InventoryTransactionResource;
 use App\Services\Interface\IInventoryTransactionService;
 
 /**
@@ -45,7 +46,12 @@ class InventoryTransactionController extends Controller
    */
     public function index(InventoryTransactionFilter $filters)
     {
-        return $this->transactionService->getAllTransactions($filters);
+        $transactions = $this->transactionService->getAllTransactions($filters);
+        if ($filters->isPaginated()) {
+        return response()
+          ->withPagination($transactions,InventoryTransactionResource::collection($transactions));
+      }
+        return InventoryTransactionResource::collection($transactions);
     }
   
   /**
@@ -85,7 +91,9 @@ class InventoryTransactionController extends Controller
    */
     public function store(InventoryTransactionStoreRequest $request)
     {
-        return $this->transactionService->createTransaction($request->validated());
+        return InventoryTransactionResource::make(
+          $this->transactionService->createTransaction($request->validated())
+        );
     }
   
   /**
@@ -114,6 +122,6 @@ class InventoryTransactionController extends Controller
    */
     public function show(string $id)
     {
-        return $this->transactionService->getTransactionById($id);
+        return InventoryTransactionResource::make($this->transactionService->getTransactionById($id));
     }
 }

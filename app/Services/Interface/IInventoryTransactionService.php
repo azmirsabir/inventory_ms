@@ -2,11 +2,11 @@
 
 namespace App\Services\Interface;
 
-use App\Http\Resources\InventoryTransactionResource;
+use App\Models\InventoryTransaction;
 
 interface IInventoryTransactionService
 {
     public function getAllTransactions($filters);
-    public function getTransactionById($id) : InventoryTransactionResource;
-    public function createTransaction(array $data) : InventoryTransactionResource;
+    public function getTransactionById($id) : InventoryTransaction;
+    public function createTransaction(array $data) : InventoryTransaction;
 }

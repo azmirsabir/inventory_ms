@@ -16,6 +16,7 @@
      */
     public function handle(Request $request, Closure $next): Response
     {
+      Log::info("Azmirrrrrr");
       Log::channel("http")->info('Incoming Request', [
         'method' => $request->method(),
         'url' => $request->fullUrl(),

@@ -119,6 +119,11 @@ and find postman collection at: **XPostmanCollection** directory in the root of 
 ## Testing
 
 Note: test the unit testing on .env.testing environment
+
+```bash
+php artisan migrate:refresh --seed env=testing
+```
+
 ```bash
 php artisan test  # manual run
 ```

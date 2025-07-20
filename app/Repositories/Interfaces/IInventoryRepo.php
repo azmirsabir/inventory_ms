@@ -18,6 +18,6 @@ interface IInventoryRepo
   public function hasSufficientStock(Inventory $inventory, int $quantity): bool;
   public function findInWarehouse(int $productId, int $warehouseId): ?Inventory;
   public function getGlobalInventory($filters): Collection;
-  public function lowStockInventory($filters): Collection;
+  public function lowStockInventory(): Collection;
   
 }
